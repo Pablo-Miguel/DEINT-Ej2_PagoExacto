@@ -12,28 +12,28 @@
             <Frame CornerRadius="10" BackgroundColor="#888888">
                 <Grid RowDefinitions ="2*,2*,2*,2*,2*" ColumnDefinitions="5*, 2*, 3*">
                     <Label Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Grid.ColumnSpan="3" Text="TOTAL POR PERSONA" HorizontalTextAlignment="Center"/>
-                    <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Grid.RowSpan="4" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" x:Name="lblTotalPago" Text="0,00€"/>
+                    <Label x:Name="lblTotalPago" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Grid.RowSpan="4" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="0,00€"/>
                     <Label Grid.Row="1" Grid.Column="2" Text="SUBTOTAL"/>
-                    <Label Grid.Row="2" Grid.Column="2" FontAttributes="Bold" Margin="0, 0, 0, 10" x:Name="lblSubtotal" Text="0,00€"/>
+                    <Label x:Name="lblSubtotal" Grid.Row="2" Grid.Column="2" FontAttributes="Bold" Margin="0, 0, 0, 10" Text="0,00€"/>
                     <Label Grid.Row="3" Grid.Column="2" Text="Propina"/>
-                    <Label Grid.Row="4" Grid.Column="2" FontAttributes="Bold" x:Name="lblPropina" Text="0,00€"/>
+                    <Label x:Name="lblPropina" Grid.Row="4" Grid.Column="2" FontAttributes="Bold" Text="0,00€"/>
                 </Grid>
             </Frame>
 
             <StackLayout>
-                <Grid RowDefinitions="2.5*,2.5*,2.5*,2.5*" ColumnDefinitions="3*, 7*">
-                    <Label VerticalOptions="Center" Margin="0, 10, 10, 0" Grid.Row="0" Grid.Column="0" Text="Introduce tu cuenta: €"/>
-                    <Entry Text="0.0" TextChanged="entryTxtCuenta_TextChanged" x:Name="entryTxtCuenta" VerticalOptions="Center" Margin="0, 10, 10, 0" Grid.Row="0" Grid.Column="1"/>
-                    <Label VerticalOptions="Center" Margin="0, 10, 10, 0" Grid.Row="1" Grid.Column="0" Text="Elige tu propina"/>
-                    <HorizontalStackLayout Margin="0, 10, 10, 0" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                <Grid RowDefinitions="2.5*,2.5*,2.5*,2.5*" ColumnDefinitions="3*, 7*" RowSpacing="50">
+                    <Label VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Text="Introduce tu cuenta: €"/>
+                    <Entry x:Name="entryTxtCuenta" Placeholder="0.0€" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" TextChanged="entryTxtCuenta_TextChanged"/>
+                    <Label VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Elige tu propina"/>
+                    <HorizontalStackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
                         <Button x:Name="btn10" Clicked="btn10_Clicked" Text="10%"/>
                         <Button x:Name="btn15" Clicked="btn15_Clicked" Margin="10, 0, 10, 0" Text="15%"/>
                         <Button x:Name="btn20" Clicked="btn20_Clicked" Text="20%"/>
                     </HorizontalStackLayout>
-                    <Label VerticalOptions="Center" x:Name="lblPropinaSlider" Grid.Row="2" Grid.Column="0" Text="Propina: 0%"/>
-                    <Slider x:Name="slider" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Minimum="0" Maximum="50"/>
-                    <Label VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Text="Número de personas"/>
-                    <Stepper x:Name="_stepper" HorizontalOptions="Center" Grid.Row="3" Grid.Column="1" Margin="10, 0, 0, 10"/>
+                    <Label x:Name="lblPropinaSlider" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Text="Propina: 0%"/>
+                    <Slider x:Name="slider" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Minimum="0" Maximum="50" ValueChanged="slider_ValueChanged"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Número de personas" VerticalOptions="Center"/>
+                    <Stepper x:Name="_stepper" Minimum="1" HorizontalOptions="Center" Grid.Row="3" Grid.Column="1" Margin="10, 0, 0, 10" ValueChanged="_stepper_ValueChanged"/>
                     <Label x:Name="lblContPers" Text="{Binding Source={x:Reference _stepper}, Path=Value, StringFormat='{0}'}"
                        HorizontalOptions="Center"
                        VerticalOptions="Center" 
