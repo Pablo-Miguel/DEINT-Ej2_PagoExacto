@@ -3,9 +3,12 @@
 public partial class MainPage : ContentPage
 {
 
+    private Int32 contPersonas;
+
 	public MainPage()
 	{
 		InitializeComponent();
+        this.contPersonas = 1;
 	}
 
     private void calcularPagos() {
@@ -60,10 +63,20 @@ public partial class MainPage : ContentPage
         calcularPagos();
     }
 
-    private void _stepper_ValueChanged(object sender, ValueChangedEventArgs e)
+    private void btnRestar_Clicked(object sender, EventArgs e)
     {
+        if (contPersonas > 1) {
+            contPersonas--;
+            lblContPers.Text = contPersonas.ToString();
+        }
         calcularPagos();
     }
 
+    private void btnSumar_Clicked(object sender, EventArgs e)
+    {
+        contPersonas++;
+        lblContPers.Text = contPersonas.ToString();
+        calcularPagos();
+    }
 }
 

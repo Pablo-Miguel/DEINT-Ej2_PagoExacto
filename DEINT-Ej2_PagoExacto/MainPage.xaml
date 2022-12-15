@@ -23,21 +23,21 @@
             <StackLayout>
                 <Grid RowDefinitions="2.5*,2.5*,2.5*,2.5*" ColumnDefinitions="3*, 7*" RowSpacing="50">
                     <Label VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Text="Introduce tu cuenta: €"/>
-                    <Entry x:Name="entryTxtCuenta" Placeholder="0.0€" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" TextChanged="entryTxtCuenta_TextChanged"/>
+                    <Entry x:Name="entryTxtCuenta" Text="0.0" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" TextChanged="entryTxtCuenta_TextChanged"/>
                     <Label VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Text="Elige tu propina"/>
-                    <HorizontalStackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                    <HorizontalStackLayout Spacing="20" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
                         <Button x:Name="btn10" Clicked="btn10_Clicked" Text="10%"/>
-                        <Button x:Name="btn15" Clicked="btn15_Clicked" Margin="10, 0, 10, 0" Text="15%"/>
+                        <Button x:Name="btn15" Clicked="btn15_Clicked" Text="15%"/>
                         <Button x:Name="btn20" Clicked="btn20_Clicked" Text="20%"/>
                     </HorizontalStackLayout>
                     <Label x:Name="lblPropinaSlider" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Text="Propina: 0%"/>
                     <Slider x:Name="slider" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Minimum="0" Maximum="50" ValueChanged="slider_ValueChanged"/>
                     <Label Grid.Row="3" Grid.Column="0" Text="Número de personas" VerticalOptions="Center"/>
-                    <Stepper x:Name="_stepper" Minimum="1" HorizontalOptions="Center" Grid.Row="3" Grid.Column="1" Margin="10, 0, 0, 10" ValueChanged="_stepper_ValueChanged"/>
-                    <Label x:Name="lblContPers" Text="{Binding Source={x:Reference _stepper}, Path=Value, StringFormat='{0}'}"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" 
-                       Grid.Row="3" Grid.Column="1"/>
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="3" Grid.Column="1">
+                        <Button x:Name="btnRestar" Text="-" Clicked="btnRestar_Clicked" />
+                        <Label x:Name="lblContPers" Text="1" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Button x:Name="btnSumar" Text="+" Clicked="btnSumar_Clicked" />
+                    </HorizontalStackLayout>
                 </Grid>
             </StackLayout>
 
